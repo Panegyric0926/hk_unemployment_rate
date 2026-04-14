@@ -1,0 +1,219 @@
+Year,Quarter,Industry of main employment,Overall(1000 persons)
+2017,Q1,Construction,335.1
+2017,Q1,"Retail, accommodation and food services",630.3
+2017,Q1,Retail,340.8
+2017,Q1,Accommodation and food services,289.5
+2017,Q1,"Transportation, storage, postal and courier services, information and communications",454.8
+2017,Q1,"Public administration, social and personal services",1021.9
+2017,Q2,Construction,342.5
+2017,Q2,"Retail, accommodation and food services",632.6
+2017,Q2,Retail,338.0
+2017,Q2,Accommodation and food services,294.6
+2017,Q2,"Transportation, storage, postal and courier services, information and communications",452.6
+2017,Q2,"Public administration, social and personal services",1026.1
+2017,Q3,Construction,345.9
+2017,Q3,"Retail, accommodation and food services",630.8
+2017,Q3,Retail,338.3
+2017,Q3,Accommodation and food services,292.4
+2017,Q3,"Transportation, storage, postal and courier services, information and communications",450.2
+2017,Q3,"Public administration, social and personal services",1032.2
+2017,Q4,Construction,346.1
+2017,Q4,"Retail, accommodation and food services",631.2
+2017,Q4,Retail,337.5
+2017,Q4,Accommodation and food services,293.7
+2017,Q4,"Transportation, storage, postal and courier services, information and communications",457.0
+2017,Q4,"Public administration, social and personal services",1047.0
+2018,Q1,Construction,353.1
+2018,Q1,"Retail, accommodation and food services",639.3
+2018,Q1,Retail,343.1
+2018,Q1,Accommodation and food services,296.2
+2018,Q1,"Transportation, storage, postal and courier services, information and communications",455.0
+2018,Q1,"Public administration, social and personal services",1060.0
+2018,Q2,Construction,353.3
+2018,Q2,"Retail, accommodation and food services",632.5
+2018,Q2,Retail,336.8
+2018,Q2,Accommodation and food services,295.8
+2018,Q2,"Transportation, storage, postal and courier services, information and communications",450.9
+2018,Q2,"Public administration, social and personal services",1070.1
+2018,Q3,Construction,350.2
+2018,Q3,"Retail, accommodation and food services",626.4
+2018,Q3,Retail,334.2
+2018,Q3,Accommodation and food services,292.2
+2018,Q3,"Transportation, storage, postal and courier services, information and communications",455.5
+2018,Q3,"Public administration, social and personal services",1077.3
+2018,Q4,Construction,352.7
+2018,Q4,"Retail, accommodation and food services",623.3
+2018,Q4,Retail,328.9
+2018,Q4,Accommodation and food services,294.4
+2018,Q4,"Transportation, storage, postal and courier services, information and communications",453.9
+2018,Q4,"Public administration, social and personal services",1093.8
+2019,Q1,Construction,336.8
+2019,Q1,"Retail, accommodation and food services",631.4
+2019,Q1,Retail,327.9
+2019,Q1,Accommodation and food services,303.5
+2019,Q1,"Transportation, storage, postal and courier services, information and communications",452.2
+2019,Q1,"Public administration, social and personal services",1096.3
+2019,Q2,Construction,337.9
+2019,Q2,"Retail, accommodation and food services",626.9
+2019,Q2,Retail,325.3
+2019,Q2,Accommodation and food services,301.6
+2019,Q2,"Transportation, storage, postal and courier services, information and communications",447.6
+2019,Q2,"Public administration, social and personal services",1111.5
+2019,Q3,Construction,342.8
+2019,Q3,"Retail, accommodation and food services",591.0
+2019,Q3,Retail,309.6
+2019,Q3,Accommodation and food services,281.3
+2019,Q3,"Transportation, storage, postal and courier services, information and communications",456.6
+2019,Q3,"Public administration, social and personal services",1121.3
+2019,Q4,Construction,334.3
+2019,Q4,"Retail, accommodation and food services",568.1
+2019,Q4,Retail,294.2
+2019,Q4,Accommodation and food services,273.8
+2019,Q4,"Transportation, storage, postal and courier services, information and communications",457.0
+2019,Q4,"Public administration, social and personal services",1130.3
+2020,Q1,Construction,311.4
+2020,Q1,"Retail, accommodation and food services",535.0
+2020,Q1,Retail,283.1
+2020,Q1,Accommodation and food services,251.9
+2020,Q1,"Transportation, storage, postal and courier services, information and communications",445.7
+2020,Q1,"Public administration, social and personal services",1127.3
+2020,Q2,Construction,305.6
+2020,Q2,"Retail, accommodation and food services",510.8
+2020,Q2,Retail,273.6
+2020,Q2,Accommodation and food services,237.2
+2020,Q2,"Transportation, storage, postal and courier services, information and communications",432.3
+2020,Q2,"Public administration, social and personal services",1113.9
+2020,Q3,Construction,303.7
+2020,Q3,"Retail, accommodation and food services",500.7
+2020,Q3,Retail,272.4
+2020,Q3,Accommodation and food services,228.3
+2020,Q3,"Transportation, storage, postal and courier services, information and communications",435.5
+2020,Q3,"Public administration, social and personal services",1105.5
+2020,Q4,Construction,315.3
+2020,Q4,"Retail, accommodation and food services",509.0
+2020,Q4,Retail,271.7
+2020,Q4,Accommodation and food services,237.3
+2020,Q4,"Transportation, storage, postal and courier services, information and communications",434.6
+2020,Q4,"Public administration, social and personal services",1105.6
+2021,Q1,Construction,310.3
+2021,Q1,"Retail, accommodation and food services",504.7
+2021,Q1,Retail,268.7
+2021,Q1,Accommodation and food services,236.0
+2021,Q1,"Transportation, storage, postal and courier services, information and communications",432.6
+2021,Q1,"Public administration, social and personal services",1091.7
+2021,Q2,Construction,322.9
+2021,Q2,"Retail, accommodation and food services",512.4
+2021,Q2,Retail,265.3
+2021,Q2,Accommodation and food services,247.1
+2021,Q2,"Transportation, storage, postal and courier services, information and communications",432.5
+2021,Q2,"Public administration, social and personal services",1101.5
+2021,Q3,Construction,334.1
+2021,Q3,"Retail, accommodation and food services",522.7
+2021,Q3,Retail,268.7
+2021,Q3,Accommodation and food services,254.0
+2021,Q3,"Transportation, storage, postal and courier services, information and communications",430.6
+2021,Q3,"Public administration, social and personal services",1110.9
+2021,Q4,Construction,336.1
+2021,Q4,"Retail, accommodation and food services",533.3
+2021,Q4,Retail,274.5
+2021,Q4,Accommodation and food services,258.8
+2021,Q4,"Transportation, storage, postal and courier services, information and communications",427.5
+2021,Q4,"Public administration, social and personal services",1116.7
+2022,Q1,Construction,317.3
+2022,Q1,"Retail, accommodation and food services",497.6
+2022,Q1,Retail,260.8
+2022,Q1,Accommodation and food services,236.8
+2022,Q1,"Transportation, storage, postal and courier services, information and communications",421.8
+2022,Q1,"Public administration, social and personal services",1080.6
+2022,Q2,Construction,328.8
+2022,Q2,"Retail, accommodation and food services",514.0
+2022,Q2,Retail,258.5
+2022,Q2,Accommodation and food services,255.4
+2022,Q2,"Transportation, storage, postal and courier services, information and communications",405.7
+2022,Q2,"Public administration, social and personal services",1081.3
+2022,Q3,Construction,338.3
+2022,Q3,"Retail, accommodation and food services",518.3
+2022,Q3,Retail,260.3
+2022,Q3,Accommodation and food services,258.0
+2022,Q3,"Transportation, storage, postal and courier services, information and communications",412.5
+2022,Q3,"Public administration, social and personal services",1118.7
+2022,Q4,Construction,343.0
+2022,Q4,"Retail, accommodation and food services",531.3
+2022,Q4,Retail,264.9
+2022,Q4,Accommodation and food services,266.4
+2022,Q4,"Transportation, storage, postal and courier services, information and communications",418.1
+2022,Q4,"Public administration, social and personal services",1130.7
+2023,Q1,Construction,338.1
+2023,Q1,"Retail, accommodation and food services",533.6
+2023,Q1,Retail,267.8
+2023,Q1,Accommodation and food services,265.8
+2023,Q1,"Transportation, storage, postal and courier services, information and communications",421.1
+2023,Q1,"Public administration, social and personal services",1113.8
+2023,Q2,Construction,340.3
+2023,Q2,"Retail, accommodation and food services",533.5
+2023,Q2,Retail,267.6
+2023,Q2,Accommodation and food services,265.8
+2023,Q2,"Transportation, storage, postal and courier services, information and communications",424.1
+2023,Q2,"Public administration, social and personal services",1124.2
+2023,Q3,Construction,344.0
+2023,Q3,"Retail, accommodation and food services",537.6
+2023,Q3,Retail,269.5
+2023,Q3,Accommodation and food services,268.1
+2023,Q3,"Transportation, storage, postal and courier services, information and communications",422.6
+2023,Q3,"Public administration, social and personal services",1142.1
+2023,Q4,Construction,351.2
+2023,Q4,"Retail, accommodation and food services",532.5
+2023,Q4,Retail,263.2
+2023,Q4,Accommodation and food services,269.2
+2023,Q4,"Transportation, storage, postal and courier services, information and communications",421.6
+2023,Q4,"Public administration, social and personal services",1142.5
+2024,Q1,Construction,350.7
+2024,Q1,"Retail, accommodation and food services",523.3
+2024,Q1,Retail,256.8
+2024,Q1,Accommodation and food services,266.6
+2024,Q1,"Transportation, storage, postal and courier services, information and communications",420.1
+2024,Q1,"Public administration, social and personal services",1139.4
+2024,Q2,Construction,350.8
+2024,Q2,"Retail, accommodation and food services",513.3
+2024,Q2,Retail,251.6
+2024,Q2,Accommodation and food services,261.7
+2024,Q2,"Transportation, storage, postal and courier services, information and communications",420.8
+2024,Q2,"Public administration, social and personal services",1151.3
+2024,Q3,Construction,352.6
+2024,Q3,"Retail, accommodation and food services",508.2
+2024,Q3,Retail,247.0
+2024,Q3,Accommodation and food services,261.3
+2024,Q3,"Transportation, storage, postal and courier services, information and communications",419.6
+2024,Q3,"Public administration, social and personal services",1153.3
+2024,Q4,Construction,350.9
+2024,Q4,"Retail, accommodation and food services",505.0
+2024,Q4,Retail,244.2
+2024,Q4,Accommodation and food services,260.8
+2024,Q4,"Transportation, storage, postal and courier services, information and communications",416.8
+2024,Q4,"Public administration, social and personal services",1152.9
+2025,Q1,Construction,345.3
+2025,Q1,"Retail, accommodation and food services",498.4
+2025,Q1,Retail,238.8
+2025,Q1,Accommodation and food services,259.6
+2025,Q1,"Transportation, storage, postal and courier services, information and communications",420.2
+2025,Q1,"Public administration, social and personal services",1161.3
+2025,Q2,Construction,335.2
+2025,Q2,"Retail, accommodation and food services",490.5
+2025,Q2,Retail,235.4
+2025,Q2,Accommodation and food services,255.1
+2025,Q2,"Transportation, storage, postal and courier services, information and communications",417.9
+2025,Q2,"Public administration, social and personal services",1157.7
+2025,Q3,Construction,332.7
+2025,Q3,"Retail, accommodation and food services",489.6
+2025,Q3,Retail,235.8
+2025,Q3,Accommodation and food services,253.8
+2025,Q3,"Transportation, storage, postal and courier services, information and communications",416.8
+2025,Q3,"Public administration, social and personal services",1170.3
+2025,Q4,Construction,333.1
+2025,Q4,"Retail, accommodation and food services",489.8
+2025,Q4,Retail,233.8
+2025,Q4,Accommodation and food services,256.0
+2025,Q4,"Transportation, storage, postal and courier services, information and communications",410.3
+2025,Q4,"Public administration, social and personal services",1174.3
+
+Source: https://www.censtatd.gov.hk/en/web_table.html?id=210-06308#
