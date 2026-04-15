@@ -25,6 +25,8 @@ import csv
 
 import numpy as np
 import statsmodels.api as sm
+import matplotlib.pyplot as plt
+from statsmodels.graphics.gofplots import qqplot
 
 BASE_DIR = Path(__file__).resolve().parent
 MODEL2_DIR = BASE_DIR.parent / "model_2"
@@ -625,6 +627,7 @@ def main():
     all_employment = read_total_employment()
 
     sector_results = []
+    plot_data = []   # for QQ and scatter plots
 
     for sector_name, config in SECTOR_CONFIG.items():
         runner = RUNNERS[config["runner"]]
@@ -668,9 +671,92 @@ def main():
             "n": len(dataset),
             "m2_r2": model2_results.rsquared,
         })
+        plot_data.append({
+            "sector": sector_name,
+            "dataset": dataset,
+            "results": model3_results,
+        })
 
     if sector_results:
         print_comparison(sector_results)
+
+    if not plot_data:
+        return
+
+    n = len(plot_data)
+    ncols = 2
+    nrows = (n + 1) // ncols
+
+    # ── QQ-plots ──────────────────────────────────────────────────────────────
+    fig_qq, axes_qq = plt.subplots(nrows, ncols, figsize=(10, 4 * nrows))
+    axes_qq = axes_qq.flatten()
+    for i, d in enumerate(plot_data):
+        qqplot(d["results"].resid, line="s", alpha=0.6, ax=axes_qq[i])
+        axes_qq[i].set_title(d["sector"])
+    for j in range(i + 1, len(axes_qq)):
+        axes_qq[j].set_visible(False)
+    fig_qq.suptitle(
+        "Model 3 (Enhanced / Two-Step) – Normal QQ-Plots of Residuals", fontsize=11
+    )
+    plt.tight_layout()
+    plt.show()
+
+    # ── Scatter plots: Intensity vs Model 2 Residual with regression line ─────
+    fig_sc, axes_sc = plt.subplots(nrows, ncols, figsize=(10, 4 * nrows))
+    axes_sc = axes_sc.flatten()
+    for i, d in enumerate(plot_data):
+        x = np.array([r["Intensity"] for r in d["dataset"]])
+        y = np.array([r["Residual"] for r in d["dataset"]])
+        gamma0, gamma1 = d["results"].params
+        p1 = d["results"].pvalues[1]
+        sig = "***" if p1 < 0.01 else ("**" if p1 < 0.05 else ("*" if p1 < 0.10 else ""))
+        ax = axes_sc[i]
+        ax.scatter(x, y, alpha=0.7, s=30)
+        x_line = np.linspace(x.min(), x.max(), 100)
+        ax.plot(x_line, gamma0 + gamma1 * x_line, color="red", linewidth=1.5)
+        ax.axhline(0, color="grey", linewidth=0.8, linestyle="--")
+        ax.set_xlabel("Intensity (IW / Employment)")
+        ax.set_ylabel("Model 2 Residual")
+        ax.set_title(d["sector"])
+        ax.annotate(
+            f"γ₁ = {gamma1:.4f}{sig}\np = {p1:.3f}",
+            xy=(0.05, 0.95), xycoords="axes fraction",
+            va="top", fontsize=8,
+            bbox=dict(boxstyle="round,pad=0.3", fc="white", alpha=0.7),
+        )
+    for j in range(i + 1, len(axes_sc)):
+        axes_sc[j].set_visible(False)
+    fig_sc.suptitle(
+        "Model 3 (Enhanced) – Intensity vs Model 2 Residual by Sector",
+        fontsize=11,
+    )
+    plt.tight_layout()
+    plt.show()
+
+    # ── Combined: all 4 sectors on one plot ───────────────────────────────────
+    COMBINED_COLORS = ["steelblue", "darkorange", "forestgreen", "crimson"]
+    fig_comb, ax_comb = plt.subplots(figsize=(9, 5))
+    for i, d in enumerate(plot_data):
+        x = np.array([r["Intensity"] for r in d["dataset"]])
+        y = np.array([r["Residual"] for r in d["dataset"]])
+        gamma0, gamma1 = d["results"].params[0], d["results"].params[1]
+        p1 = d["results"].pvalues[1]
+        sig = "***" if p1 < 0.01 else ("**" if p1 < 0.05 else ("*" if p1 < 0.10 else ""))
+        color = COMBINED_COLORS[i % len(COMBINED_COLORS)]
+        ax_comb.scatter(x, y, alpha=0.45, s=25, color=color)
+        x_line = np.linspace(x.min(), x.max(), 100)
+        ax_comb.plot(
+            x_line, gamma0 + gamma1 * x_line, color=color, linewidth=2,
+            label=f"{d['sector']}  γ₁ = {gamma1:.4f}{sig}",
+        )
+    ax_comb.axhline(0, color="grey", linewidth=0.8, linestyle="--")
+    ax_comb.set_xlabel("Intensity (IW / Employment)")
+    ax_comb.set_ylabel("Model 2 Residual")
+    ax_comb.set_title("Model 3 (Enhanced) – All Sectors: Intensity vs Model 2 Residual")
+    ax_comb.legend(fontsize=9)
+    ax_comb.grid(True, alpha=0.3)
+    plt.tight_layout()
+    plt.show()
 
 
 if __name__ == "__main__":

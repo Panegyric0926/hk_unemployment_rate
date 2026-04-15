@@ -25,6 +25,8 @@ import csv
 
 import numpy as np
 import statsmodels.api as sm
+import matplotlib.pyplot as plt
+from statsmodels.graphics.gofplots import qqplot
 
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -343,3 +345,9 @@ dataset = build_dataset(
 )
 results = fit_ols(dataset)
 print_regression_report(dataset, results)
+
+# QQ-plot of residuals
+fig = qqplot(results.resid, line="s", alpha=0.6)
+fig.suptitle("Retail (Model 2) – Normal QQ-Plot of Residuals", fontsize=11)
+plt.tight_layout()
+plt.show()

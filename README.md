@@ -16,6 +16,7 @@ This repository contains a series of OLS regression models examining how importe
 .
 ├── model_1.py                       # Economy-wide baseline model
 ├── quarterly_cpi.py                 # CPI quarterly aggregation helper
+├── plot_data_overview.py            # Exploratory data visualisations (heat-map, scatter matrix, time series)
 ├── unemployment_rate.csv            # Economy-wide quarterly unemployment, employment, LFPR
 ├── imported_workers.csv             # Annual imported worker approvals (economy-wide)
 ├── gdp.csv                          # GDP year-on-year growth rate
@@ -60,6 +61,8 @@ $$
 
 **Data sources:** `unemployment_rate.csv`, `imported_workers.csv`, `gdp.csv`, `inflation_rate.csv`, `interest_rate.csv`
 
+A **QQ-plot** of residuals is displayed after the regression summary.
+
 ---
 
 ### Model 2 — Sector-Specific OLS
@@ -76,6 +79,8 @@ Each sector model adds industry-specific activity controls on top of the common 
 All sector models share the same macro controls: **GDP growth**, **inflation rate**, **HIBOR 3-month interest rate**.
 
 Imported workers are annual approval figures divided equally across the four quarters of each year. Each sector model prints two runs where applicable: one on the historical sample only, and one extended to include a forecast year.
+
+Each Model 2 script also displays a **QQ-plot** of OLS residuals to assess normality. Scripts with two runs (Construction, Community) show a side-by-side panel.
 
 ---
 
@@ -95,6 +100,10 @@ $$
 
 The key coefficient `gamma1` measures how strongly foreign-labour intensity affects unemployment. Comparing `gamma1` across Construction, Retail, Transportation, and Community reveals cross-sector heterogeneity. See [model_3/MODEL_3_COMPARISON.md](model_3/MODEL_3_COMPARISON.md) for a detailed explanation of the differences between variants.
 
+Each Model 3 script also displays:
+- A **2×2 QQ-plot grid** – one panel per sector, checking normality of OLS residuals.
+- A **2×2 Intensity vs Unemployment scatter grid** – showing observed data, an OLS trend line, and the γ₁ coefficient with its p-value. For `model_3_enhance.py` the y-axis is the Model 2 residual.
+
 ---
 
 ## Data Notes
@@ -113,6 +122,7 @@ The key coefficient `gamma1` measures how strongly foreign-labour intensity affe
 numpy
 statsmodels
 matplotlib
+pandas  (optional – only needed if you extend plot_data_overview.py with pandas-based analysis)
 ```
 
 Install with:
@@ -143,4 +153,24 @@ python model_3/model_3.py
 python model_3/model_3_macro.py
 python model_3/model_3_enhance.py
 python model_3/plot_reverse_causality.py
+
+# Data overview visualisations
+python plot_data_overview.py
 ```
+
+---
+
+## Data Overview Visualisations (`plot_data_overview.py`)
+
+A standalone script that produces six exploratory charts from all available data without running any regression:
+
+| # | Chart | Description |
+|---|---|---|
+| 1 | **Economy-wide time series** | Unemployment rate, imported-worker ratio, GDP growth, inflation, and HIBOR 3M in a 5-panel stacked plot. |
+| 2 | **Sector unemployment time series** | All four sector unemployment rates on one chart, with the economy-wide rate as a dashed reference. |
+| 3 | **Annual imported-worker approvals by sector** | Grouped bar chart showing each sector's annual approvals side-by-side. |
+| 4 | **Correlation heat-map** | Pearson correlation matrix for the six Model 1 variables (unemployment, IW ratio, GDP growth, inflation, interest rate, LFPR). |
+| 5 | **Pairwise scatter matrix** | Every variable pair as a scatter plot; diagonal panels show histograms. |
+| 6 | **IW ratio vs unemployment** | Scatter plot coloured by year with an OLS trend line, illustrating the raw association between foreign-labour intensity and unemployment. |
+
+Run from the project root; no additional dependencies beyond `numpy` and `matplotlib` are required.

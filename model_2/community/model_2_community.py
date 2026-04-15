@@ -29,6 +29,8 @@ import sys
 
 import numpy as np
 import statsmodels.api as sm
+import matplotlib.pyplot as plt
+from statsmodels.graphics.gofplots import qqplot
 
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -425,3 +427,16 @@ print_regression_report(
     results,
     forecast_note=forecast_note,
 )
+
+# QQ-plots of residuals (real-data-only and imputed-2017 samples side by side)
+fig, axes = plt.subplots(1, 2, figsize=(10, 4))
+qqplot(historical_results.resid, line="s", alpha=0.6, ax=axes[0])
+axes[0].set_title("Real Data Only (from 2018)")
+qqplot(results.resid, line="s", alpha=0.6, ax=axes[1])
+axes[1].set_title("Including Predicted 2017")
+fig.suptitle(
+    f"Community (Model 2) – Normal QQ-Plots of Residuals\n({selected_industry})",
+    fontsize=10,
+)
+plt.tight_layout()
+plt.show()

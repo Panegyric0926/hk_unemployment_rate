@@ -20,6 +20,8 @@ Data sources:
 import csv
 import numpy as np
 import statsmodels.api as sm
+import matplotlib.pyplot as plt
+from statsmodels.graphics.gofplots import qqplot
 
 
 # ── Helper: parse "2017 Q1" → (2017, 1) ─────────────────────────────────────
@@ -237,3 +239,9 @@ for label, coef, pval in zip(labels, results.params, results.pvalues):
 print(f"\n  R²          = {results.rsquared:.4f}")
 print(f"  Adj. R²     = {results.rsquared_adj:.4f}")
 print(f"  F-statistic = {results.fvalue:.4f}  (p = {results.f_pvalue:.4f})")
+
+# ── 11. QQ-plot of residuals ──────────────────────────────────────────────────
+fig = qqplot(results.resid, line="s", alpha=0.6)
+fig.suptitle("Model 1 (Economy-Wide) – Normal QQ-Plot of Residuals", fontsize=11)
+plt.tight_layout()
+plt.show()

@@ -30,6 +30,8 @@ import csv
 
 import numpy as np
 import statsmodels.api as sm
+import matplotlib.pyplot as plt
+from statsmodels.graphics.gofplots import qqplot
 
 
 BASE_DIR = Path(__file__).resolve().parent
@@ -467,3 +469,13 @@ print_regression_report(
     forecast_results,
     forecast_notes=forecast_notes,
 )
+
+# QQ-plots of residuals (historical and forecast samples side by side)
+fig, axes = plt.subplots(1, 2, figsize=(10, 4))
+qqplot(historical_results.resid, line="s", alpha=0.6, ax=axes[0])
+axes[0].set_title("Historical (through 2024)")
+qqplot(forecast_results.resid, line="s", alpha=0.6, ax=axes[1])
+axes[1].set_title("Including Forecasted 2025")
+fig.suptitle("Construction (Model 2) – Normal QQ-Plots of Residuals", fontsize=11)
+plt.tight_layout()
+plt.show()
