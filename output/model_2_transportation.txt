@@ -1,0 +1,45 @@
+Observations: 36  (from 2017 Q1 to 2025 Q4)
+
+================================================================================
+Transportation OLS Regression Results
+================================================================================
+                                   OLS Regression Results                                   
+============================================================================================
+Dep. Variable:     Transportation Unemployment Rate   R-squared:                       0.854
+Model:                                          OLS   Adj. R-squared:                  0.824
+Method:                               Least Squares   F-statistic:                     28.26
+Date:                              Fri, 24 Apr 2026   Prob (F-statistic):           7.32e-11
+Time:                                      22:10:09   Log-Likelihood:                -25.830
+No. Observations:                                36   AIC:                             65.66
+Df Residuals:                                    29   BIC:                             76.74
+Df Model:                                         6                                         
+Covariance Type:                          nonrobust                                         
+============================================================================================
+                               coef    std err          t      P>|t|      [0.025      0.975]
+--------------------------------------------------------------------------------------------
+const (beta0)                3.5370      2.190      1.615      0.117      -0.942       8.016
+Imported Workers (beta1)     0.0008      0.000      1.821      0.079   -9.64e-05       0.002
+GDP Growth (beta2)          -0.0266      0.030     -0.899      0.376      -0.087       0.034
+Inflation Rate (beta3)       0.0916      0.135      0.677      0.504      -0.185       0.368
+Interest Rate 3M (beta4)    -0.3451      0.109     -3.161      0.004      -0.568      -0.122
+Air Cargo Output (beta5)     0.0019      0.002      1.015      0.318      -0.002       0.006
+Total Tourists (beta6)   -1.724e-07   2.09e-08     -8.255      0.000   -2.15e-07    -1.3e-07
+==============================================================================
+Omnibus:                        6.421   Durbin-Watson:                   1.551
+Prob(Omnibus):                  0.040   Jarque-Bera (JB):                5.345
+Skew:                          -0.631   Prob(JB):                       0.0691
+Kurtosis:                       4.404   Cond. No.                     2.54e+08
+==============================================================================
+
+Coefficient Estimates:
+  beta0 (Intercept)                coef =     3.536972   p = 0.1171  
+  beta1 (Imported Workers)         coef =     0.000784   p = 0.0789  *
+  beta2 (GDP Growth)               coef =    -0.026649   p = 0.3760  
+  beta3 (Inflation Rate)           coef =     0.091582   p = 0.5041  
+  beta4 (Interest Rate 3M)         coef =    -0.345069   p = 0.0037  ***
+  beta5 (Air Cargo Output)         coef =     0.001909   p = 0.3184  
+  beta6 (Total Tourists)           coef =    -0.000000   p = 0.0000  ***
+
+  R^2         = 0.8540
+  Adj. R^2    = 0.8237
+  F-statistic = 28.2604  (p = 0.0000)

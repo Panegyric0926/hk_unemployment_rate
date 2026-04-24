@@ -1,0 +1,43 @@
+Observations: 32  (from 2018 Q1 to 2025 Q4)
+
+OLS Regression Results
+                                 OLS Regression Results                                
+=======================================================================================
+Dep. Variable:     Community Unemployment Rate   R-squared:                       0.670
+Model:                                     OLS   Adj. R-squared:                  0.590
+Method:                          Least Squares   F-statistic:                     8.448
+Date:                         Fri, 24 Apr 2026   Prob (F-statistic):           4.58e-05
+Time:                                 22:03:55   Log-Likelihood:                -18.705
+No. Observations:                           32   AIC:                             51.41
+Df Residuals:                               25   BIC:                             61.67
+Df Model:                                    6                                         
+Covariance Type:                     nonrobust                                         
+==================================================================================================
+                                     coef    std err          t      P>|t|      [0.025      0.975]
+--------------------------------------------------------------------------------------------------
+const (beta0)                      1.0051      1.172      0.857      0.399      -1.410       3.420
+Imported Workers (beta1)           0.0008      0.000      2.115      0.045    2.16e-05       0.002
+GDP Growth (beta2)                -0.0454      0.021     -2.175      0.039      -0.088      -0.002
+Inflation Rate (beta3)            -0.0205      0.121     -0.170      0.867      -0.269       0.228
+Interest Rate 3M (beta4)          -0.3254      0.089     -3.636      0.001      -0.510      -0.141
+Government Expenditure (beta5)     0.0007      0.001      1.309      0.203      -0.000       0.002
+Above65 Population (beta6)        -0.0010      0.002     -0.483      0.634      -0.005       0.003
+==============================================================================
+Omnibus:                        0.205   Durbin-Watson:                   1.135
+Prob(Omnibus):                  0.902   Jarque-Bera (JB):                0.279
+Skew:                           0.169   Prob(JB):                        0.870
+Kurtosis:                       2.692   Cond. No.                     5.88e+04
+==============================================================================
+
+Coefficient Estimates:
+  beta0 (Intercept)                      coef =     1.005133   p = 0.3994  
+  beta1 (Imported Workers)               coef =     0.000826   p = 0.0446  **
+  beta2 (GDP Growth)                     coef =    -0.045411   p = 0.0393  **
+  beta3 (Inflation Rate)                 coef =    -0.020505   p = 0.8667  
+  beta4 (Interest Rate 3M)               coef =    -0.325384   p = 0.0013  ***
+  beta5 (Government Expenditure)         coef =     0.000708   p = 0.2026  
+  beta6 (Above65 Population)             coef =    -0.000987   p = 0.6335  
+
+  R^2         = 0.6697
+  Adj. R^2    = 0.5904
+  F-statistic = 8.4476  (p = 0.0000)

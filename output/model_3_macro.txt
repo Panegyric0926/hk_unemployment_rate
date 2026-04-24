@@ -1,0 +1,47 @@
+Observations: 36  (from 2017 Q1 to 2025 Q4)
+                            OLS Regression Results                            
+==============================================================================
+Dep. Variable:      Unemployment Rate   R-squared:                       0.527
+Model:                            OLS   Adj. R-squared:                  0.466
+Method:                 Least Squares   F-statistic:                     8.651
+Date:                Fri, 24 Apr 2026   Prob (F-statistic):           8.25e-05
+Time:                        22:11:15   Log-Likelihood:                -26.035
+No. Observations:                  36   AIC:                             62.07
+Df Residuals:                      31   BIC:                             69.99
+Df Model:                           4                                         
+Covariance Type:            nonrobust                                         
+=============================================================================================
+                                coef    std err          t      P>|t|      [0.025      0.975]
+---------------------------------------------------------------------------------------------
+gamma0 (Intercept)            1.9860      0.234      8.480      0.000       1.508       2.464
+gamma1 (Intensity)            1.2294      0.453      2.715      0.011       0.306       2.153
+gamma2 (GDP Growth)          -0.0575      0.020     -2.924      0.006      -0.098      -0.017
+gamma3 (Inflation Rate)      -0.0745      0.129     -0.576      0.569      -0.339       0.189
+gamma4 (Interest Rate 3M)    -0.2699      0.064     -4.191      0.000      -0.401      -0.139
+==============================================================================
+Omnibus:                        6.951   Durbin-Watson:                   0.775
+Prob(Omnibus):                  0.031   Jarque-Bera (JB):                5.461
+Skew:                           0.833   Prob(JB):                       0.0652
+Kurtosis:                       3.930   Cond. No.                         33.3
+==============================================================================
+
+Coefficient Estimates:
+  gamma0 (Intercept)              coef =     1.986000   p = 0.0000  ***
+  gamma1 (Intensity)              coef =     1.229393   p = 0.0107  **
+  gamma2 (GDP Growth)             coef =    -0.057518   p = 0.0064  ***
+  gamma3 (Inflation Rate)         coef =    -0.074528   p = 0.5689  
+  gamma4 (Interest Rate 3M)       coef =    -0.269853   p = 0.0002  ***
+
+  R^2         = 0.5275
+  Adj. R^2    = 0.4665
+  F-statistic = 8.6507  (p = 0.0001)
+
+================================================================================
+  Cross-Sector Comparison Summary (with Macro Controls)
+================================================================================
+Sector                   gamma1    p-value   Sig      R^2  Adj.R^2     N
+------------------------------------------------------------------------
+Community              1.229393     0.0107    **   0.5275   0.4665    36
+Transportation         0.732701     0.0352    **   0.4335   0.3604    36
+Construction           0.366782     0.1988         0.5745   0.5195    36
+Retail                 0.249224     0.0199    **   0.6290   0.5812    36

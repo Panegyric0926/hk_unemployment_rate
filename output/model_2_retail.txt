@@ -1,0 +1,45 @@
+Observations: 36  (from 2017 Q1 to 2025 Q4)
+
+================================================================================
+Retail OLS Regression Results
+================================================================================
+                               OLS Regression Results                               
+====================================================================================
+Dep. Variable:     Retail Unemployment Rate   R-squared:                       0.862
+Model:                                  OLS   Adj. R-squared:                  0.833
+Method:                       Least Squares   F-statistic:                     30.19
+Date:                      Fri, 24 Apr 2026   Prob (F-statistic):           3.28e-11
+Time:                              22:08:23   Log-Likelihood:                -44.480
+No. Observations:                        36   AIC:                             103.0
+Df Residuals:                            29   BIC:                             114.0
+Df Model:                                 6                                         
+Covariance Type:                  nonrobust                                         
+===============================================================================================
+                                  coef    std err          t      P>|t|      [0.025      0.975]
+-----------------------------------------------------------------------------------------------
+const (beta0)                  13.7390      1.529      8.985      0.000      10.612      16.866
+Imported Workers (beta1)        0.0004      0.000      2.372      0.025    5.33e-05       0.001
+GDP Growth (beta2)             -0.0633      0.047     -1.353      0.187      -0.159       0.032
+Inflation Rate (beta3)         -0.0158      0.234     -0.067      0.947      -0.495       0.463
+Interest Rate 3M (beta4)       -0.6241      0.161     -3.867      0.001      -0.954      -0.294
+Retail Index (beta5)            0.0321      0.030      1.057      0.299      -0.030       0.094
+Reception Index Avg (beta6)    -0.1181      0.031     -3.818      0.001      -0.181      -0.055
+==============================================================================
+Omnibus:                        0.281   Durbin-Watson:                   1.254
+Prob(Omnibus):                  0.869   Jarque-Bera (JB):                0.219
+Skew:                          -0.172   Prob(JB):                        0.896
+Kurtosis:                       2.833   Cond. No.                     2.41e+04
+==============================================================================
+
+Coefficient Estimates:
+  beta0 (Intercept)                  coef =    13.739003   p = 0.0000  ***
+  beta1 (Imported Workers)           coef =     0.000387   p = 0.0245  **
+  beta2 (GDP Growth)                 coef =    -0.063256   p = 0.1866  
+  beta3 (Inflation Rate)             coef =    -0.015793   p = 0.9467  
+  beta4 (Interest Rate 3M)           coef =    -0.624126   p = 0.0006  ***
+  beta5 (Retail Index)               coef =     0.032050   p = 0.2993  
+  beta6 (Reception Index Avg)        coef =    -0.118080   p = 0.0007  ***
+
+  R^2         = 0.8620
+  Adj. R^2    = 0.8334
+  F-statistic = 30.1855  (p = 0.0000)

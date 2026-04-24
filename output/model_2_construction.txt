@@ -1,0 +1,45 @@
+Observations: 32  (from 2017 Q1 to 2024 Q4)
+
+OLS Regression Results
+                                  OLS Regression Results                                  
+==========================================================================================
+Dep. Variable:     Construction Unemployment Rate   R-squared:                       0.688
+Model:                                        OLS   Adj. R-squared:                  0.596
+Method:                             Least Squares   F-statistic:                     7.544
+Date:                            Fri, 24 Apr 2026   Prob (F-statistic):           7.80e-05
+Time:                                    22:06:41   Log-Likelihood:                -53.986
+No. Observations:                              32   AIC:                             124.0
+Df Residuals:                                  24   BIC:                             135.7
+Df Model:                                       7                                         
+Covariance Type:                        nonrobust                                         
+==================================================================================================
+                                     coef    std err          t      P>|t|      [0.025      0.975]
+--------------------------------------------------------------------------------------------------
+const (beta0)                     20.5371      6.988      2.939      0.007       6.114      34.960
+ImportedWorkers per 1K (beta1)     0.3706      0.170      2.175      0.040       0.019       0.722
+GDP Growth (beta2)                -0.1829      0.074     -2.462      0.021      -0.336      -0.030
+Inflation Rate (beta3)            -0.3432      0.378     -0.907      0.373      -1.124       0.438
+Interest Rate 3M (beta4)          -0.8792      0.321     -2.739      0.011      -1.542      -0.217
+Gross Value (beta5)             3.546e-06   8.03e-05      0.044      0.965      -0.000       0.000
+Compensation (beta6)              -0.0006      0.000     -1.773      0.089      -0.001       0.000
+Actual Expenditure (beta7)         0.0001   9.65e-05      1.124      0.272   -9.07e-05       0.000
+==============================================================================
+Omnibus:                       12.812   Durbin-Watson:                   0.896
+Prob(Omnibus):                  0.002   Jarque-Bera (JB):               13.215
+Skew:                           1.183   Prob(JB):                      0.00135
+Kurtosis:                       5.077   Cond. No.                     1.84e+06
+==============================================================================
+
+Coefficient Estimates:
+  beta0 (Intercept)                   coef =    20.537057   p = 0.0072  ***
+  beta1 (ImportedWorkers per 1K)      coef =     0.370557   p = 0.0397  **
+  beta2 (GDP Growth)                  coef =    -0.182903   p = 0.0214  **
+  beta3 (Inflation Rate)              coef =    -0.343189   p = 0.3733  
+  beta4 (Interest Rate 3M)            coef =    -0.879169   p = 0.0114  **
+  beta5 (Gross Value)                 coef =     0.000004   p = 0.9651  
+  beta6 (Compensation)                coef =    -0.000612   p = 0.0890  *
+  beta7 (Actual Expenditure)          coef =     0.000109   p = 0.2720  
+
+  R^2         = 0.6875
+  Adj. R^2    = 0.5964
+  F-statistic = 7.5438  (p = 0.0001)
