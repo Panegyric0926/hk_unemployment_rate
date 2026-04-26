@@ -37,6 +37,25 @@ MONTH_STR_TO_Q = {
     "Oct": 4, "Nov": 4, "Dec": 4,
 }
 
+SECTOR_COLORS = {
+    "Construction": "#e29578",
+    "Retail": "#89c6ac",
+    "Transportation": "#19929d",
+    "Community": "#5cb0cf",
+}
+
+MACRO_COLORS = {
+    "Imported Worker Ratio": SECTOR_COLORS["Construction"],
+    "GDP Year-on-Year Growth": SECTOR_COLORS["Retail"],
+    "Quarterly Inflation Rate": SECTOR_COLORS["Community"],
+    "HIBOR 3-Month Interest Rate": SECTOR_COLORS["Transportation"],
+}
+
+HEATMAP_CMAP = mcolors.LinearSegmentedColormap.from_list(
+    "sector_diverging",
+    [SECTOR_COLORS["Construction"], "#f7f4ef", SECTOR_COLORS["Retail"]],
+)
+
 
 # ── helpers ───────────────────────────────────────────────────────────────────
 
@@ -196,57 +215,68 @@ for folder in SECTOR_FOLDERS:
 # PLOT 1 – Time-series panel (economy-wide macro + imported workers)
 # ══════════════════════════════════════════════════════════════════════════════
 
-fig1, axes1 = plt.subplots(5, 1, figsize=(12, 14), sharex=True)
+fig1, axes1 = plt.subplots(5, 1, figsize=(16, 30), sharex=True, constrained_layout=True)
+
+# Helper function to apply styling to all plots to keep code clean
+def style_ax(ax, title, ylabel):
+    ax.set_title(title)
+    ax.set_ylabel(ylabel)
+    ax.grid(True, alpha=0.3)
+    # This adds 10% padding to the top/bottom so lines aren't cut off
+    ax.margins(y=0.1)
 
 axes1[0].plot(m1_t, m1_unemp, color="steelblue", linewidth=1.5)
-axes1[0].set_ylabel("Unemployment Rate (%)")
-axes1[0].set_title("Economy-Wide Unemployment Rate")
-axes1[0].grid(True, alpha=0.3)
+style_ax(axes1[0], "Economy-Wide Unemployment Rate", "Unemployment (%)")
 
 axes1[1].bar(
     [k[0] + (k[1] - 1) / 4 for k in m1_keys],
     m1_iw,
     width=0.2,
-    color="darkorange",
+    color=MACRO_COLORS["Imported Worker Ratio"],
     alpha=0.8,
 )
-axes1[1].set_ylabel("IW / Total Emp (%)")
-axes1[1].set_title("Imported Worker Ratio (Economy-Wide)")
+style_ax(axes1[1], "Imported Worker Ratio (Economy-Wide)", "IW / Total (%)")
 axes1[1].grid(True, alpha=0.3)
 
-axes1[2].plot(m1_t, m1_gdp, color="green", linewidth=1.5)
+axes1[2].plot(
+    m1_t,
+    m1_gdp,
+    color=MACRO_COLORS["GDP Year-on-Year Growth"],
+    linewidth=1.5,
+)
 axes1[2].axhline(0, color="black", linewidth=0.8, linestyle="--")
-axes1[2].set_ylabel("GDP YoY Change (%)")
+style_ax(axes1[2], "GDP Year-on-Year Growth", "GDP YoY Change (%)")
 axes1[2].set_title("GDP Year-on-Year Growth")
 axes1[2].grid(True, alpha=0.3)
 
-axes1[3].plot(m1_t, m1_infl, color="crimson", linewidth=1.5)
+axes1[3].plot(
+    m1_t,
+    m1_infl,
+    color=MACRO_COLORS["Quarterly Inflation Rate"],
+    linewidth=1.5,
+)
 axes1[3].axhline(0, color="black", linewidth=0.8, linestyle="--")
-axes1[3].set_ylabel("Inflation Rate (%)")
-axes1[3].set_title("Quarterly Inflation Rate")
-axes1[3].grid(True, alpha=0.3)
+style_ax(axes1[3], "Quarterly Inflation Rate", "Inflation (%)")
 
-axes1[4].plot(m1_t, m1_ir, color="purple", linewidth=1.5)
-axes1[4].set_ylabel("HIBOR 3M (%)")
-axes1[4].set_title("HIBOR 3-Month Interest Rate")
+axes1[4].plot(
+    m1_t,
+    m1_ir,
+    color=MACRO_COLORS["HIBOR 3-Month Interest Rate"],
+    linewidth=1.5,
+)
+axes1[4].axhline(0, color="black", linewidth=0.8, linestyle="--")
+style_ax(axes1[4], "HIBOR 3-Month Interest Rate", "HIBOR 3M (%)")
 # axes1[4].set_xlabel("Year")
 axes1[4].grid(True, alpha=0.3)
 
 # fig1.suptitle("Economy-Wide Time Series Overview", fontsize=13)
-plt.tight_layout()
+#plt.tight_layout()
 plt.show()
 
 
 # ══════════════════════════════════════════════════════════════════════════════
 # PLOT 2 – Sector unemployment time series (all four sectors + economy-wide)
 # ══════════════════════════════════════════════════════════════════════════════
-
-SECTOR_COLORS = {
-    "Construction": "saddlebrown",
-    "Retail": "darkorange",
-    "Transportation": "steelblue",
-    "Community": "forestgreen",
-}
 
 fig2, ax2 = plt.subplots(figsize=(12, 5))
 
@@ -286,7 +316,6 @@ x_pos = np.arange(len(all_years_iw))
 bar_width = 0.8 / n_sectors
 
 fig3, ax3 = plt.subplots(figsize=(12, 5))
-bar_colors = ["saddlebrown", "darkorange", "steelblue", "forestgreen"]
 for j, (sector, annual) in enumerate(sector_iw_annual.items()):
     values = [annual.get(y, 0) for y in all_years_iw]
     ax3.bar(
@@ -294,7 +323,7 @@ for j, (sector, annual) in enumerate(sector_iw_annual.items()):
         values,
         width=bar_width,
         label=sector,
-        color=bar_colors[j],
+        color=SECTOR_COLORS[sector],
         alpha=0.85,
     )
 
@@ -325,7 +354,7 @@ data_matrix = np.array([m1_unemp, m1_iw, m1_gdp, m1_infl, m1_ir, m1_lfpr])
 corr_matrix = np.corrcoef(data_matrix)
 
 fig4, ax4 = plt.subplots(figsize=(7, 6))
-cax = ax4.imshow(corr_matrix, vmin=-1, vmax=1, cmap="RdBu_r", aspect="auto")
+cax = ax4.imshow(corr_matrix, vmin=-1, vmax=1, cmap=HEATMAP_CMAP, aspect="auto")
 plt.colorbar(cax, ax=ax4, label="Pearson r")
 
 ax4.set_xticks(range(len(var_names)))

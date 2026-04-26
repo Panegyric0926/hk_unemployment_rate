@@ -60,6 +60,13 @@ SECTOR_CONFIG = {
     },
 }
 
+SECTOR_COLORS = {
+    "Construction": "#e29578",
+    "Retail": "#89c6ac",
+    "Transportation": "#19929d",
+    "Community": "#5cb0cf",
+}
+
 
 # ---------------------------------------------------------------------------
 # Parsing helpers
@@ -397,10 +404,11 @@ def main():
         gamma0, gamma1 = d["results"].params[0], d["results"].params[1]
         p1 = d["results"].pvalues[1]
         sig = "***" if p1 < 0.01 else ("**" if p1 < 0.05 else ("*" if p1 < 0.10 else ""))
+        color = SECTOR_COLORS[d["sector"]]
         ax = axes_sc[i]
-        ax.scatter(x, y, alpha=0.7, s=30)
+        ax.scatter(x, y, alpha=0.7, s=30, color=color)
         x_line = np.linspace(x.min(), x.max(), 100)
-        ax.plot(x_line, gamma0 + gamma1 * x_line, color="red", linewidth=1.5)
+        ax.plot(x_line, gamma0 + gamma1 * x_line, color=color, linewidth=1.5)
         ax.set_xlabel("Intensity (IW / Employment)")
         ax.set_ylabel("Unemployment Rate (%)")
         ax.set_title(d["sector"])
@@ -420,7 +428,6 @@ def main():
     plt.show()
 
     # ── Combined: all 4 sectors on one plot ───────────────────────────────────
-    COMBINED_COLORS = ["steelblue", "darkorange", "forestgreen", "crimson"]
     fig_comb, ax_comb = plt.subplots(figsize=(9, 5))
     for i, d in enumerate(plot_data):
         x = np.array([r["Intensity"] for r in d["dataset"]])
@@ -428,7 +435,7 @@ def main():
         gamma0, gamma1 = d["results"].params[0], d["results"].params[1]
         p1 = d["results"].pvalues[1]
         sig = "***" if p1 < 0.01 else ("**" if p1 < 0.05 else ("*" if p1 < 0.10 else ""))
-        color = COMBINED_COLORS[i % len(COMBINED_COLORS)]
+        color = SECTOR_COLORS[d["sector"]]
         ax_comb.scatter(x, y, alpha=0.45, s=25, color=color)
         x_line = np.linspace(x.min(), x.max(), 100)
         ax_comb.plot(

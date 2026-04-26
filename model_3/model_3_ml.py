@@ -67,12 +67,11 @@ SECTOR_CONFIG = {
 }
 
 SECTOR_COLORS = {
-    "Construction": "steelblue",
-    "Retail": "darkorange",
-    "Transportation": "forestgreen",
-    "Community": "crimson",
+    "Construction": "#e29578",
+    "Retail": "#89c6ac",
+    "Transportation": "#19929d",
+    "Community": "#5cb0cf",
 }
-
 
 # ---------------------------------------------------------------------------
 # Parsing helpers
@@ -571,8 +570,19 @@ def plot_sector_unemployment_decomposition(gb, X, y, feature_names, sector_label
     the mean SHAP contribution of each feature.
     """
     explainer = shap.TreeExplainer(gb)
-    shap_values = explainer.shap_values(X)
-    base_value = float(explainer.expected_value)
+    shap_values = np.asarray(explainer.shap_values(X))
+    if shap_values.ndim == 3 and shap_values.shape[-1] == 1:
+        shap_values = shap_values[..., 0]
+    if shap_values.ndim != 2:
+        raise ValueError(
+            "Expected 2D SHAP values for single-output regression, "
+            f"got shape {shap_values.shape}."
+        )
+
+    base_value_arr = np.asarray(explainer.expected_value)
+    if base_value_arr.size == 0:
+        raise ValueError("SHAP expected_value is empty.")
+    base_value = float(base_value_arr.reshape(-1)[0])
 
     sectors_unique = list(SECTOR_CONFIG.keys())
     n_features = len(feature_names)
